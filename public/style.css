@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Red-Hat Text', sans-serif;
+}
+
+:root {
+    --main-blue: #234465;
+    --main-orange: #FFA000;
+}
+
+header {
+    width: 100%;
+    border-bottom: 2px solid var(--main-blue);
+    font-size: 20px;
+}
+
+header nav {
+    display: flex;
+    padding: 2%;
+}
+
+header nav ul {
+    display: flex;
+    flex-grow: 1;
+}
+
+header nav ul li a {
+    color: var(--main-blue);
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline var(--main-orange);
+}
+
+nav ul:nth-child(2) {
+    justify-content: flex-end;
+}
+
+header nav ul li {
+    list-style-type: none;
+    margin: 2%;
+}
+
+footer {
+    width: 100%;
+}
+
+footer p {
+    padding: 3%;
+    border-top: 2px solid var(--main-blue);
+    font-size: 20px;
+    color: var(--main-blue);
+    text-align: center;
+    font-style: italic;
+}
+
+footer p a {
+    color: var(--main-orange);
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline var(--main-blue);
+}
+
+h1 {
+    text-align: center;
+    color: var(--main-orange);
+}
+h3 {
+    text-align: center;
+    color: var(--main-blue);
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form div input, label {
+    margin: 0 auto;
+    display: block;
+    color: var(--main-blue);
+}
+
+form div label {
+    font-weight: bold;
+}
+
+form div input {
+    padding: 1%;
+    width: 50%;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid var(--main-blue);
+    border-radius: 15px;
+}
+
+form div {
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+form textarea {
+    color: var(--main-blue);
+    width: 50%;
+    padding: 2%;
+    border: 1px solid var(--main-blue);
+    resize: none;
+    height: 15vh;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.course-details {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.course-details div.info {
+    display: flex;
+}
+
+.course-details img{
+    /* border:1px solid purple; */
+    max-width: 500px;
+}
+
+.course-details div.info div.description {
+    border-radius: 15px;
+    /* border: 1px solid var(--main-blue); */
+    color: var(--main-blue);
+    padding: 2%;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.course-details div.actions {
+    color: var(--main-blue);
+    width: 100%;
+    padding: 2%;
+}
+
+.course-details div.actions button {
+    padding: 1%;
+    border: 1px solid var(--main-blue);
+    background: var(--main-blue);
+    color: white;
+    border-radius: 5px;
+}
+
+p.technology {
+    text-align: right;
+    color: var(--main-orange);
+    font-weight: bold;
+    text-decoration: underline var(--main-blue);
+}
+
+p.technology span {
+    color: var(--main-blue);
+}
+
+.course-details div.actions button:hover {
+    color: var(--main-orange);
+}
+
+.course-details img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    /* border: 1px solid var(--main-blue); */
+}
+
+form select {
+    width: 30%;
+    border: 1px solid var(--main-blue);
+    color: var(--main-blue);
+    padding: 0.5%;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+form select option {
+    border-radius: 15px;
+    color: var(--main-blue);
+}
+
+main {
+    width: 100%;
+}
+
+main h1 {
+    padding: 2%;
+}
+
+main .about-us {
+    padding: 1%;
+    color: white;
+}
+
+main .about-us h1 {
+    color: white;
+    text-align: left;
+}
+
+main .about-us p {
+    padding: 2%;
+    font-size: 18px;
+}
+
+main .container {
+    padding: 1%;
+    display: flex;
+    background-color: var(--main-blue);
+}
+
+main .container iframe {
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 513px;
+    height: 289px;
+}
+
+main p.message {
+    width: 100%;
+    text-align: center;
+    color: darkred;
+    font-style: italic;
+}
+
+form div button {
+    padding: 2%;
+    width: 20%;
+    border: 1px solid var(--main-blue);
+    background-color: white;
+    color: var(--main-orange);
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.user-info > div:nth-child(1){
+    text-align: center;
+    margin: 2%;
+}
+
+.user-info div:nth-child(1) p{
+    display: inline-block;
+    color: var(--main-blue);
+    font-weight: bold;
+}
+
+.user-info div:nth-child(1) p span{
+    color: var(--main-orange);
+}
+
+form div button:hover {
+    border: 1px solid white;
+    border-bottom: 1px solid var(--main-orange);
+    color: var(--main-blue);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.courses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    vertical-align: top;
+}
+
+.course {
+    vertical-align: top;
+    height: 25vh;
+    padding: 1%;
+    margin: 0.5%;
+    border-radius: 6px;
+    border: 2px solid var(--main-orange);
+}
+
+.course h3 {
+    text-align: center;
+    color: var(--main-blue);
+    margin-bottom: 5%;
+}
+
+.course img {
+    /* border: 1px solid var(--main-blue); */
+    max-width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.course h3:hover {
+    text-decoration: underline var(--main-orange);
+    cursor: pointer;
+}
+main .mycourses-label {
+    text-align: center;
+    align-content: center;
+}
