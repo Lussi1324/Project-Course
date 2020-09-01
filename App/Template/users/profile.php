@@ -9,11 +9,11 @@ require_once dirname(__FILE__) . '/../home/header.php';
 
   <div class="user-info">
       <div>
-          <p>Username: <span><?=$data->getUser()->getUsername(); ?></span></p>
-          <p>Email: <span><?=$data->getUser()->getEmail();?></span></p>
+          <p> Username: <span><?=$data->getUser()->getUsername(); ?> </span></p>
+          <p> Email: <span><?=$data->getUser()->getEmail();?> </span></p>
 
-          <p>Created courses: <span> [<?= count($data->getCourses());?>]</span></p>
-
+          <p> Created courses: <span> [<?= count($data->getCourses());?>]</span> </p>
+          <p> <a href="edit_profile.php?id=<?=$data->getUser()->getId();?>"> Edit Profile</a></p>
       </div>
       <div class="user-info"><div><p><span>My Courses</span></p></div></div>
       <div class="courses">

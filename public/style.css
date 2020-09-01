@@ -245,6 +245,7 @@ form div button {
 .user-info > div:nth-child(1){
     text-align: center;
     margin: 2%;
+
 }
 
 .user-info div:nth-child(1) p{
@@ -297,8 +298,4 @@ form div button:hover {
 .course h3:hover {
     text-decoration: underline var(--main-orange);
     cursor: pointer;
-}
-main .mycourses-label {
-    text-align: center;
-    align-content: center;
 }

@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Data\UserDTO;
+use App\Data\UserEditDTO;
 use App\Service\CourseServiceInterface;
 use App\Service\UserServiceInterface;
 use Core\DataBinderInterface;
@@ -96,7 +97,6 @@ class UserHttpHandler extends HttpHandlerAbstract
     {
         try {
             $user = $this->userService->login($formData['username'], $formData['password']);
-            $currentUser = $this->dataBinder->bind($formData, UserDTO::class);
 
             if (null !== $user) {
                 $_SESSION['id'] = $user->getId();
@@ -106,11 +106,57 @@ class UserHttpHandler extends HttpHandlerAbstract
             $this->render("users/login", null,
                 [$ex->getMessage()]);
         }
-
     }
 
 
+    /**
+     * @param array $formData
+     * @throws \Exception
+     */
+    public function edit(array $formData = [])
+    {
+        if (isset($formData['edit'])) {
+            $this->handleEditProcess($formData);
+        } else {
+            $dto = $this->getEditDTO();
+            $this->render("users/edit", $dto);
+        }
+    }
 
+    /**
+     * @param array $formData
+     * @throws \Exception
+     */
+    private function handleEditProcess(array $formData)
+    {
+        try {
+            /** @var UserEditDTO $dto */
+            $dto = $this->dataBinder->bind($formData, UserEditDTO::class);
+            $dto->setId($_GET['id']);
+            $this->userService->edit($dto,$formData['confirm_password']);
+            $_SESSION['username'] = $dto->getUsername();
+            $this->redirect("profile.php");
+        } catch (\Exception $ex) {
+            $dto = $this->getEditDTO();
+            $this->render("users/edit", $dto,
+                [$ex->getMessage()]);
+        }
+    }
 
+    /**
+     * @return UserDTO
+     * @throws \Exception
+     */
+    private function getEditDTO(): UserDTO
+    {
+        $user = $this->userService->currentUser();
+
+        $dto = new UserDTO();
+        $dto->setId( $user->getId());
+        $dto->setUsername( $user->getUsername());
+        $dto->setEmail( $user->getEmail());
+
+        return $dto;
+    }
 
 }

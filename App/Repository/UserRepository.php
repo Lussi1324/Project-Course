@@ -4,6 +4,7 @@ namespace App\Repository;
 
 
 use App\Data\UserDTO;
+use App\Data\UserEditDTO;
 use Core\DataBinderInterface;
 use Database\DatabaseInterface;
 
@@ -31,7 +32,21 @@ class UserRepository extends DatabaseAbstract implements UserRepositoryInterface
         return true;
     }
 
+    public function edit(UserEditDTO $userEditDTO){
+        $this->db->query(
+            "UPDATE users SET
+            username = ?,
+            email =?,
+            password = ?
+            WHERE id = ?"
+        )->execute([
+            $userEditDTO->getUsername(),
+            $userEditDTO ->getEmail(),
+            $userEditDTO->getPassword(),
+            $userEditDTO->getId()
+        ]);
 
+    }
     public function findOneByUsername(string $username): ?UserDTO
     {
         return $this->db->query(

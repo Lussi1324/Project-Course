@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__).'/../home/header.php';
-/** @var array $errors |null */ ?>
-
+/** @var array $errors |null */
+?>
 
 <main>
     <h1>Register</h1>

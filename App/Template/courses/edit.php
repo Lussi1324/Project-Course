@@ -32,7 +32,6 @@ require_once dirname(__FILE__) . '/../home/header.php';
             </select>
         </div>
         <div>
-
             <button type="submit" name="edit">Edit</button>
         </div>
 

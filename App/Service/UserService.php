@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Data\UserDTO;
+use App\Data\UserEditDTO;
 use App\Repository\UserRepositoryInterface;
 use App\Service\Encryption\EncryptionServiceInterface;
 
@@ -27,7 +28,7 @@ class UserService implements UserServiceInterface
 
     /**
      * @param UserDTO $userDTO
-     * * @param  $confirmPassword
+     * @param  $confirmPassword
      * @return bool
      * @throws \Exception
      */
@@ -40,7 +41,6 @@ class UserService implements UserServiceInterface
         if(null !== $this->userRepository->findOneByUsername($userDTO->getUsername())){
             throw new \Exception("Username is already taken!");
         }
-
         $this->encryptPassword($userDTO);
         return $this->userRepository->insert($userDTO);
     }
@@ -67,8 +67,6 @@ class UserService implements UserServiceInterface
         return $userFromDB;
     }
 
-
-
     public function currentUser(): ?UserDTO
     {
         if(!$_SESSION['id']){
@@ -85,8 +83,6 @@ class UserService implements UserServiceInterface
         }
         return true;
     }
-
-
 
     /**
      * @return \Generator|UserDTO[]
@@ -105,5 +101,25 @@ class UserService implements UserServiceInterface
         $plainPassword = $userDTO->getPassword();
         $passwordHash = $this->encryptionService->hash($plainPassword);
         $userDTO->setPassword($passwordHash);
+    }
+
+    /**
+     * @param UserEditDTO $userEditDTO
+     * * @param  $confirmPassword
+     * @return void
+     * @throws \Exception
+     */
+    public function edit(UserEditDTO $userEditDTO, $confirmPassword)
+    {
+        $userFromDB = $this->userRepository->findOneById($userEditDTO->getId());
+
+        if(false == $this->encryptionService->verify($userEditDTO->getOldpassword(), $userFromDB->getPassword())){
+            throw new \Exception("Invalid Password!");
+        }
+        if($userEditDTO->getPassword() !== $confirmPassword){
+            throw new \Exception("The passwords do not match!");
+        }
+        $this->encryptPassword($userEditDTO);
+        return $this->userRepository->edit($userEditDTO);
     }
 }

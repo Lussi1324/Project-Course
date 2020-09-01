@@ -1,12 +1,8 @@
-
 <?php
 require_once dirname(__FILE__) . '/../home/header.php';
-//require_once dirname(__FILE__).'/../home/header.php';
 /** @var array $errors |null */
  /** @var \App\Data\TechnologyDTO[] $data */
 ?>
-
-
 
 <main>
     <h1>Create Course</h1>
@@ -37,7 +33,6 @@ require_once dirname(__FILE__) . '/../home/header.php';
             </select>
         </div>
         <div>
-
             <button type="submit" name="add">Create</button>
         </div>
 

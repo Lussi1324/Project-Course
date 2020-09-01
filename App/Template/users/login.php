@@ -1,9 +1,8 @@
 <?php
 require_once dirname(__FILE__).'/../home/header.php';
 /** @var array $errors  */ ?>
-<?php /** @var \App\Data\UserDTO $data */ ?>
-
-
+<?php /** @var \App\Data\UserDTO $data */
+?>
 
 <main>
     <h1>Login</h1>
@@ -13,7 +12,7 @@ require_once dirname(__FILE__).'/../home/header.php';
 
     <?php if($data != ""): ?>
         <p class="message" style="color: darkgreen">
-            <?= $data?>, welcome to our platform!
+            <?= $data->getUsername();?>, welcome to our platform!
         </p>
     <?php endif; ?>
     <form action="" method="post">

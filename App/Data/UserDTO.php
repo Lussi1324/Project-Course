@@ -66,7 +66,7 @@ class UserDTO
     public function setPassword($password): UserDTO
     {
         DTOValidator::validate(self::PASSWORD_MIN_LENGTH, self::PASSWORD_MAX_LENGTH,
-            $password, "password", " New Password");
+            $password, "password", " Password");
         $this->password = $password;
         return $this;
     }
